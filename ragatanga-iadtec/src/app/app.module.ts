@@ -9,6 +9,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 
+import { CommonModule } from '@angular/common';
+
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -47,6 +49,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppFooterModule,
     AppHeaderModule,
     AppSidebarModule,
+    CommonModule,
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),

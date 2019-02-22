@@ -15,7 +15,10 @@ export class PaisComponent implements OnInit {
   constructor( private paisService: PaisService) {}
 
   ngOnInit() {
+    this.atualizar();
+  }
 
+  atualizar() {
     this.paisService.getPaises().then( result => {
       this.paises = result;
     });
@@ -29,13 +32,17 @@ export class PaisComponent implements OnInit {
   }
 
   editar(pais) {
-    console.log(pais);
     this.openForm = true;
     this.paisSelecionado.nome = pais.nome;
     this.paisSelecionado.id = pais.id;
   }
 
   salvar() {
-    
+    this.paisService.save(this.paisSelecionado).then(success => {
+      console.log('success');
+      this.atualizar();
+    }).catch(error => {
+      console.log(error);
+    });
   }
 }
