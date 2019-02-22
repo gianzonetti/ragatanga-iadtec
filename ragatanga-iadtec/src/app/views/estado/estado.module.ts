@@ -6,6 +6,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CommonModule } from '@angular/common';
 import { EstadoComponent } from './estado.component';
 import { EstadoRoutingModule } from './estado-routing.module';
+import { PaisService } from '../pais/pais.service';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { EstadoRoutingModule } from './estado-routing.module';
     CommonModule,
     ButtonsModule.forRoot()
   ],
-  declarations: [ EstadoComponent ]
+  declarations: [ EstadoComponent ],
+  providers: [PaisService]
 })
 export class EstadoModule { }

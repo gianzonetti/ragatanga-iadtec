@@ -25,9 +25,10 @@ export class EstadoComponent implements OnInit {
   }
 
   getPaises() {
+    console.log('TEST');
     this.paisService.getPaises().then( result => {
-      this.paisList = result;
       console.log(result);
+      this.paisList = result;
     });
   }
 
@@ -35,16 +36,28 @@ export class EstadoComponent implements OnInit {
     this.openForm = true;
     this.estadoSelecionado.id = 0;
     this.estadoSelecionado.nome = '';
+    this.estadoSelecionado.uf = '';
+    this.estadoSelecionado.pais = new Pais();
   }
 
-  editar(pais) {
+  editar(estado) {
     this.openForm = true;
-    this.estadoSelecionado.nome = pais.nome;
-    this.estadoSelecionado.id = pais.id;
+    this.estadoSelecionado.id = estado.id;
+    this.estadoSelecionado.nome = estado.nome;
+    this.estadoSelecionado.uf = estado.uf;
+    this.estadoSelecionado.pais = estado.pais;
   }
 
   salvar() {
     this.estadoService.save(this.estadoSelecionado).then(success => {
+      this.atualizar();
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  deletar(estado) {
+    this.estadoService.delete(estado).then(success => {
       this.atualizar();
     }).catch(error => {
       console.log(error);
