@@ -35,32 +35,16 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'base',
-        loadChildren: './views/base/base.module#BaseModule'
-      },
-      {
-        path: 'buttons',
-        loadChildren: './views/buttons/buttons.module#ButtonsModule'
-      },
-      {
         path: 'pais',
         loadChildren: './views/pais/pais.module#PaisModule'
       },
       {
+        path: 'estado',
+        loadChildren: './views/estado/estado.module#EstadoModule'
+      },
+      {
         path: 'cliente',
         loadChildren: './views/cliente/cliente.module#ClienteModule'
-      },
-      {
-        path: 'icons',
-        loadChildren: './views/icons/icons.module#IconsModule'
-      },
-      {
-        path: 'theme',
-        loadChildren: './views/theme/theme.module#ThemeModule'
-      },
-      {
-        path: 'widgets',
-        loadChildren: './views/widgets/widgets.module#WidgetsModule'
       }
     ]
   },

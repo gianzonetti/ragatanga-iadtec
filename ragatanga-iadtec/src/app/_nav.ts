@@ -23,5 +23,10 @@ export const navItems: NavData[] = [
     name: 'País',
     url: '/pais',
     icon: 'icon-tag'
+  },
+  {
+    name: 'Estado',
+    url: '/estado',
+    icon: 'icon-tag'
   }
 ];
