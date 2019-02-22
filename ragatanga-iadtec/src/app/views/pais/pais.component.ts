@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pais } from '../../models/pais';
 
 @Component({
   selector: 'app-pais',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pais.component.scss']
 })
 export class PaisComponent implements OnInit {
+  openForm = false;
+  paisSelecionado: Pais;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  adicionar() {
+    this.openForm = !this.openForm;
+    this.paisSelecionado.id = '';
+    this.paisSelecionado.nome = '';
   }
-
 }
