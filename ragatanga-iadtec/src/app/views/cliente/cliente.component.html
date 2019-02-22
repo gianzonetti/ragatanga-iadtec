@@ -1,7 +1,99 @@
 <div class="animated fadeIn">
-  <div class="row" style="padding-bottom: 5px">
+  <div class="row">
     <div class="ml-auto"></div>
-    <button class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Adicionar</button>
+    <button
+      *ngIf="openForm"
+      class="btn btn-sm btn-danger"
+      (click)="openForm = false"
+    >
+      X
+    </button>
+
+    <button *ngIf="openForm" class="btn btn-sm btn-success" (click)="salvar()">
+      <i class="fa fa-check"></i> Salvar
+    </button>
+    <button
+      *ngIf="!openForm"
+      class="btn btn-sm btn-primary"
+      (click)="adicionar()"
+    >
+      <i class="fa fa-plus"></i> Novo
+    </button>
+  </div>
+  <div *ngIf="openForm" class="row">
+    <div class="card col-12">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <input
+              type="text"
+              id="id"
+              readonly="readonly"
+              [(ngModel)]="clienteSelecionado.id"
+              style="display: none"
+            />
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="nome">Nome</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="nome"
+                  placeholder="Nome do cliente"
+                  [(ngModel)]="clienteSelecionado.nome"
+                  #nome="ngModel"
+                />
+              </div>
+              <div class="col-sm-6">
+                <label for="cpf">CPF</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="cpf"
+                  placeholder="Insira o cpf do cliente"
+                  [(ngModel)]="clienteSelecionado.cpf"
+                  #cpf="ngModel"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="email">Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="email"
+                  placeholder="Email"
+                  [(ngModel)]="clienteSelecionado.email"
+                  #email="ngModel"
+                />
+              </div>
+              <div class="col-sm-6">
+                <label for="data">Data Nascimento</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="data"
+                  placeholder="Data de Nascimento"
+                  [(ngModel)]="clienteSelecionado.dataNascimento"
+                  #data="ngModel"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="estado">Estado</label>
+                <select id="estado" class="form-control">
+                  <option *ngFor="let estado of estados">{{
+                    estado.uf
+                  }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="row">
     <div class="card col-12">
@@ -9,67 +101,33 @@
         <table class="table table-responsive-sm table-hover table-outline mb-0">
           <thead class="thead-light">
             <tr>
-              <th class="text-center"><i class="icon-people"></i></th>
-              <th>User</th>
-              <th class="text-center">Country</th>
-              <th>Usage</th>
-              <th class="text-center">Payment Method</th>
-              <th>Activity</th>
+              <th>CPF</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Data Nascimento</th>
+              <th>Estado</th>
+              <th>Situação</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let cliente of clientes">
               <td class="text-center">
-                <div class="avatar">
-                  <img
-                    src="assets/img/avatars/1.jpg"
-                    class="img-avatar"
-                    alt="admin@bootstrapmaster.com"
-                  />
-                  <span class="avatar-status badge-success"></span>
-                </div>
+                {{ cliente.cpf }}
               </td>
               <td>
-                <div>Yiorgos Avraamu</div>
-                <div class="small text-muted">
-                  <span>New</span> | Registered: Jan 1, 2015
-                </div>
+                {{ cliente.nome }}
               </td>
               <td class="text-center">
-                <i
-                  class="flag-icon flag-icon-us h4 mb-0"
-                  title="us"
-                  id="us"
-                ></i>
+                {{ cliente.email }}
               </td>
               <td>
-                <div class="clearfix">
-                  <div class="float-left">
-                    <strong>50%</strong>
-                  </div>
-                  <div class="float-right">
-                    <small class="text-muted"
-                      >Jun 11, 2015 - Jul 10, 2015</small
-                    >
-                  </div>
-                </div>
-                <div class="progress progress-xs">
-                  <div
-                    class="progress-bar bg-success"
-                    role="progressbar"
-                    style="width: 50%"
-                    aria-valuenow="50"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
+                {{ cliente.dataNascimento }}
               </td>
               <td class="text-center">
-                <i class="fa fa-cc-mastercard" style="font-size:24px"></i>
+                {{ cliente.estado }}
               </td>
               <td>
-                <div class="small text-muted">Last login</div>
-                <strong>10 sec ago</strong>
+                {{ cliente.situacao }}
               </td>
             </tr>
           </tbody>
