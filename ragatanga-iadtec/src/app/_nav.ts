@@ -15,8 +15,13 @@ export interface NavData {
 
 export const navItems: NavData[] = [
   {
-    name: 'Dashboard',
-    url: '/dashboard',
-    icon: 'icon-speedometer'
+    name: 'Cliente',
+    url: '/cliente',
+    icon: 'icon-user'
+  },
+  {
+    name: 'País',
+    url: '/pais',
+    icon: 'icon-tag'
   }
 ];

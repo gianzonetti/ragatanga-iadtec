@@ -10,7 +10,7 @@ import { P500Component } from './views/error/500.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'cliente',
     pathMatch: 'full',
   },
   {
@@ -43,20 +43,16 @@ export const routes: Routes = [
         loadChildren: './views/buttons/buttons.module#ButtonsModule'
       },
       {
-        path: 'charts',
-        loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
+        path: 'pais',
+        loadChildren: './views/pais/pais.module#PaisModule'
       },
       {
-        path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
+        path: 'cliente',
+        loadChildren: './views/cliente/cliente.module#ClienteModule'
       },
       {
         path: 'icons',
         loadChildren: './views/icons/icons.module#IconsModule'
-      },
-      {
-        path: 'notifications',
-        loadChildren: './views/notifications/notifications.module#NotificationsModule'
       },
       {
         path: 'theme',
