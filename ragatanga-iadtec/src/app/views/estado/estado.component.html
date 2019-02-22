@@ -1,43 +1,117 @@
 <div class="animated fadeIn">
+  <div class="row">
+    <div class="ml-auto"></div>
+    <button
+      *ngIf="openForm"
+      class="btn btn-sm btn-danger margin-bottom"
+      (click)="openForm = false"
+    >
+      X
+    </button>
+
+    <button
+      *ngIf="openForm"
+      class="btn btn-sm btn-success margin-bottom"
+      (click)="salvar()"
+    >
+      <i class="fa fa-check"></i> Salvar
+    </button>
+
+    <button
+      *ngIf="!openForm"
+      class="btn btn-sm btn-primary margin-bottom"
+      (click)="adicionar()"
+    >
+      <i class="fa fa-plus"></i> Novo
+    </button>
+  </div>
+  <div *ngIf="openForm" class="row">
+    <div class="card col-12">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <input
+              type="text"
+              id="id"
+              readonly="readonly"
+              [(ngModel)]="estadoSelecionado.id"
+              style="display: none"
+            />
+            <div class="row">
+              <div class="col-6">
+                <label for="name">Nome: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="nome"
+                  placeholder="Nome do país"
+                  [(ngModel)]="estadoSelecionado.nome"
+                  #nome="ngModel"
+                  required
+                />
+              </div>
+              <div class="col-6">
+                <label for="name">UF: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="uf"
+                  placeholder="UF"
+                  [(ngModel)]="estadoSelecionado.uf"
+                  #uf="ngModel"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <label for="name">País: </label>
+                <select name="pais" class="form-control" required>
+                  <option [ngValue]="undefined" disabled
+                    >Escolha um país
+                  </option>
+                  <option
+                    *ngFor="let pais of paisList"
+                    [value]="pais"
+                    [label]="pais.nome"
+                  ></option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!--/.row-->
   <div class="row">
     <div class="card col-12">
-      
       <div class="card-body">
         <table class="table table-responsive-sm table-hover table-outline mb-0">
           <thead class="thead-light">
             <tr>
-              <th >Estado</th>
+              <th>Estado</th>
               <th class="text-center">Sigla</th>
               <th class="text-center">Pais</th>
-              <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let estado of estados">
-              <td class="text-center">
-                <div class="avatar">
-                  {{ estado.nome }}
-                </div>
-              </td>
               <td>
+                {{ estado.nome }}
+              </td>
+              <td class="text-center">
                 {{ estado.uf }}
               </td>
               <td class="text-center">
                 {{ estado.pais.nome }}
               </td>
               <td>
-                <button
-                  class="btn btn-xs btn-info"
-                >
+                <button class="btn btn-xs btn-info">
                   <i class="fa fa-edit"></i>
                 </button>
-              </td>
-              <td>
-                <button
-                  class="btn btn-xs btn-danger"
-                >
+                <button class="btn btn-xs btn-danger">
                   <i class="fa fa-trash"></i>
                 </button>
               </td>

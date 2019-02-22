@@ -10,10 +10,25 @@ export class EstadoService {
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json'
   });
-
+  api = '/api/estado';
   constructor(private http: HttpClient) { }
 
   getEstados() {
-    return this.http.get<Estado[]>(`/api/estado`, { headers: this.headers }).toPromise();
+    return this.http.get<Estado[]>(`${this.api}`, { headers: this.headers }).toPromise();
+  }
+
+  save(estado) {
+    if (estado.id) {
+      return this.http.put(`${this.api}/${estado.id}`, estado, { headers: this.headers })
+      .toPromise();
+    } else {
+      return this.http.post(`${this.api}/save`, estado, { headers: this.headers })
+      .toPromise();
+    }
+  }
+
+  delete(estado) {
+    return this.http.delete(`${this.api}/${estado.id}`, { headers: this.headers })
+    .toPromise();
   }
 }

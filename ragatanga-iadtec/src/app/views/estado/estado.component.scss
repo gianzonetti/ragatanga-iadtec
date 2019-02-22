@@ -1,3 +1,9 @@
-.table tr th:last-child {
+.table tr th:last-child,
+.table tr td:last-child {
     width: 10%;
+}
+
+button.margin-bottom {
+    margin-bottom: 10px;
+    margin-left: 5px;
 }

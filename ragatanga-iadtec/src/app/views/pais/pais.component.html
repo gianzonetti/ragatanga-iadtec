@@ -1,14 +1,14 @@
 <div class="animated fadeIn">
   <div class="row">
     <div class="ml-auto"></div>
-    <button *ngIf="openForm" class="btn btn-sm btn-danger" (click)="openForm = false">
+    <button *ngIf="openForm" class="btn btn-sm btn-danger margin-bottom" (click)="openForm = false">
       X
     </button>
 
-    <button *ngIf="openForm" class="btn btn-sm btn-success" (click)="salvar()">
+    <button *ngIf="openForm" class="btn btn-sm btn-success margin-bottom" (click)="salvar()">
       <i class="fa fa-check"></i> Salvar
     </button>
-    <button *ngIf="!openForm" class="btn btn-sm btn-primary" (click)="adicionar()">
+    <button *ngIf="!openForm" class="btn btn-sm btn-primary margin-bottom" (click)="adicionar()">
       <i class="fa fa-plus"></i> Novo
     </button>
   </div>
