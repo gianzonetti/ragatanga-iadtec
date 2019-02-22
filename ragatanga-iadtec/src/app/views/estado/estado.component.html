@@ -9,36 +9,25 @@
             <tr>
               <th class="text-center"><i class="icon-people"></i></th>
               <th>Estado</th>
-              <th class="text-center">Country</th>
-              <th>Usage</th>
-              <th class="text-center">Payment Method</th>
-              <th>Activity</th>
+              <th class="text-center">Sigla</th>
+              <th></th>
+              <th class="text-center">Pais</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let estado of estados">
+              <td></td>
               <td class="text-center">
                 <div class="avatar">
-                  <img
-                    src="assets/img/avatars/1.jpg"
-                    class="img-avatar"
-                    alt="admin@bootstrapmaster.com"
-                  />
-                  <span class="avatar-status badge-success"></span>
+                  {{ estado.nome }}
                 </div>
               </td>
               <td>
-                <div>Yiorgos Avraamu</div>
-                <div class="small text-muted">
-                  <span>New</span> | Registered: Jan 1, 2015
-                </div>
+                {{ estado.uf }}
               </td>
               <td class="text-center">
-                <i
-                  class="flag-icon flag-icon-us h4 mb-0"
-                  title="us"
-                  id="us"
-                ></i>
+                {{ estado.pais }}
               </td>
               <td>
                 <div class="clearfix">
