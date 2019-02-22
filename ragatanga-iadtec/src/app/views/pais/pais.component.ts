@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pais } from '../../models/pais';
+import { PaisService } from './pais.service';
 
 @Component({
   selector: 'app-pais',
@@ -8,15 +9,33 @@ import { Pais } from '../../models/pais';
 })
 export class PaisComponent implements OnInit {
   openForm = false;
-  paisSelecionado: Pais;
+  paisSelecionado: Pais = new Pais();
+  paises;
 
-  constructor() {}
+  constructor( private paisService: PaisService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.paisService.getPaises().then( result => {
+      this.paises = result;
+    });
+  }
 
   adicionar() {
-    this.openForm = !this.openForm;
+
+    this.openForm = true;
     this.paisSelecionado.id = '';
     this.paisSelecionado.nome = '';
+  }
+
+  editar(pais) {
+    console.log(pais);
+    this.openForm = true;
+    this.paisSelecionado.nome = pais.nome;
+    this.paisSelecionado.id = pais.id;
+  }
+
+  salvar() {
+    
   }
 }
