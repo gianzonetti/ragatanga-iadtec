@@ -66,16 +66,10 @@
             <div class="row">
               <div class="col-6">
                 <label for="name">País: </label>
-                <select name="pais" class="form-control"
-                  [(ngModel)]="estadoSelecionado.pais" required>
-                  <option [ngValue]="undefined" disabled
-                    >Escolha um país
-                  </option>
+                <select name="pais" class="form-control">
                   <option
                     *ngFor="let pais of paisList"
-                    [value]="pais"
-                    [label]="pais.nome"
-                  ></option>
+                  >{{pais.nome}}</option>
                 </select>
               </div>
             </div>

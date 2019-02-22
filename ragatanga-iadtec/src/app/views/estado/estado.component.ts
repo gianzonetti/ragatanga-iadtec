@@ -20,6 +20,7 @@ export class EstadoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.estadoSelecionado = new Estado();
     this.getPaises();
     this.atualizar();
   }
@@ -34,10 +35,7 @@ export class EstadoComponent implements OnInit {
 
   adicionar() {
     this.openForm = true;
-    this.estadoSelecionado.id = 0;
-    this.estadoSelecionado.nome = '';
-    this.estadoSelecionado.uf = '';
-    this.estadoSelecionado.pais = new Pais();
+    this.estadoSelecionado = new Estado();
   }
 
   editar(estado) {
