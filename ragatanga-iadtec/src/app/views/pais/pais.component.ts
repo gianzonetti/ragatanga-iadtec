@@ -10,7 +10,7 @@ import { PaisService } from './pais.service';
 export class PaisComponent implements OnInit {
   openForm = false;
   paisSelecionado: Pais = new Pais();
-  paises;
+  paises: Pais[];
 
   constructor( private paisService: PaisService) {}
 
@@ -39,7 +39,14 @@ export class PaisComponent implements OnInit {
 
   salvar() {
     this.paisService.save(this.paisSelecionado).then(success => {
-      console.log('success');
+      this.atualizar();
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  deletar(pais) {
+    this.paisService.delete(pais).then(success => {
       this.atualizar();
     }).catch(error => {
       console.log(error);
