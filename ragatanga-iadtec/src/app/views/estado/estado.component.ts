@@ -3,7 +3,8 @@ import { EstadoService } from './estado.service';
 import { Estado } from '../../models/estado';
 
 @Component({
-  templateUrl: 'estado.component.html'
+  templateUrl: 'estado.component.html',
+  styleUrls: ['./estado.component.scss']
 })
 export class EstadoComponent implements OnInit {
   estados: Estado[];
